@@ -4,10 +4,10 @@ _"Fun fact: You can make any Wikipedia article dystopian by changing it to the p
 
 #### Build
 
-```
-yarn
-yarn start-app
-```
+- yarn
+- yarn start-app
+- [http://localhost:8020/](http://localhost:8020/)
+
 
 #### About
 
