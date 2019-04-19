@@ -9,7 +9,6 @@ const save = require("./save");
 const getData = require("./functions/getData");
 const session = require("./session");
 const scratch = require("./scratch");
-const transactions = require("./transactions");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,7 +31,5 @@ app.get("/session", (req, res) => {
 });
 
 app.get("/scratch", scratch);
-
 app.post("/save", save);
-app.post("/transactions", transactions);
 app.post("/login", login);
