@@ -13,7 +13,7 @@ yarn start-app
 
 The app leverages the Roomkey API for locational search results by proxying the requests through [cors-anywhere](https://cors-anywhere.herokuapp.com/). The content is pulled from Wikipedia using their WikiMedia API and then past-tensified using [this library](https://github.com/migregorio/Tensify/blob/master/tensify.js). The "encampments" listed for each location correspond to the number of hotels there, as told by Roomkey's API.
 
-I wrote a generic Node Express server that didn't end up getting used, but had a notion that I might turn this into an RPG where you roam the shattered earth collecting rail spikes that serve as currency which can be used to rest at the various encampments and recharge your HP.
+I wrote a generic Node Express server that didn't end up getting used. I had a notion that I might turn this into an RPG where you roam the shattered earth collecting rail spikes that serve as currency which can be used to rest at the various encampments and recharge your HP. In this case, the backend would be used for persisting user data.
 
 #### TODO
 
