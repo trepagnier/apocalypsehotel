@@ -2,7 +2,7 @@
 
 _"Fun fact: You can make any Wikipedia article dystopian by changing it to the past tense."_ - [Paul R (\@lbcyber)](https://twitter.com/lbcyber/status/1115015586243862528)
 
-### Build
+#### Build
 
 ```
 yarn
@@ -15,7 +15,7 @@ The app leverages the Roomkey API for locational search results by proxying the 
 
 I wrote a generic Node Express server that didn't end up getting used, but had a notion that I might turn this into an RPG where you roam the shattered earth collecting rail spikes that serve as currency which can be used to rest at the various encampments and recharge your HP.
 
-### TODO
+#### TODO
 
 - Clean up everything.
 - Make it a game 🕹️.
