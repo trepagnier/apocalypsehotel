@@ -2,7 +2,6 @@ import React from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import PubSub from "pubsub-js";
 import api from "app/api/api";
-import getLocationSummary from "app/functions/getLocationSummary";
 import $ from "jquery";
 import appState from "app/state";
 import capitalize from "app/functions/capitalize";

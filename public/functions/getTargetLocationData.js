@@ -1,6 +1,15 @@
 import api from "app/api/api";
 import getLocationSummary from "app/functions/getLocationSummary";
 import capitalize from "app/functions/capitalize";
+import isUSState from "app/functions/isUSState";
+
+// @TODO: Find a better solution. Include regions for US but not international
+// cities.
+function getLocationString(name, region) {
+  console.log(region);
+  if (!isUSState(region)) return name;
+  return `${name}%2C_${capitalize(region)}`;
+}
 
 export default locationId =>
   new Promise(res => {
@@ -13,7 +22,7 @@ export default locationId =>
       .then(metadata => {
         locationData.coords = [metadata.lat, metadata.lng];
         return getLocationSummary(
-          `${metadata.name}%2C_${capitalize(metadata.region_name)}`,
+          getLocationString(metadata.name, metadata.region_name),
           metadata.hotel_count
         );
       })
