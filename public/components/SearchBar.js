@@ -6,6 +6,7 @@ import PubSub from "pubsub-js";
 import getLocationSummary from "app/functions/getLocationSummary";
 import $ from "jquery";
 import appState from "app/state";
+import capitalize from "app/functions/capitalize";
 
 const style = {
   paddingBottom: 0
@@ -19,7 +20,10 @@ const resolveSearchString = input => {
 
   // @TODO: fix this messy hack. If you pass the full location name rather than
   // a partial location name, it only returns partial results.
-  return searchString.substring(0, searchString.length - 2);
+  if (searchString.length >= 3) {
+    return searchString.substring(0, searchString.length - 2);
+  }
+  return searchString;
 };
 
 export default class SearchBar extends React.Component {
@@ -48,12 +52,13 @@ export default class SearchBar extends React.Component {
       // If there's only one result, assume it's the search target and proceed
       if (locations[0].id) {
         api.getCityMetaDataById(locations[0].id).then(metadata => {
-          getLocationSummary(locations[0].name, metadata.hotel_count).then(
-            summary => {
-              appState.set("locationSummary", summary);
-              console.log(summary);
-            }
-          );
+          getLocationSummary(
+            `${metadata.name}%2C_${capitalize(metadata.region_name)}`,
+            metadata.hotel_count
+          ).then(summary => {
+            appState.set("locationSummary", summary);
+            console.log(summary);
+          });
 
           appState.set("coords", [metadata.lat, metadata.lng]);
         });
