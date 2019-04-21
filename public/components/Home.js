@@ -1,5 +1,4 @@
 import React from "react";
-import Results from "app/components/Results";
 import PropTypes from "prop-types";
 import SearchBar from "app/components/SearchBar";
 import Map from "app/components/Map";

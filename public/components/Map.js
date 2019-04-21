@@ -12,15 +12,10 @@ const style = {
 };
 
 class Map extends React.Component {
-  constructor() {
-    super();
-    PubSub.subscribe("updateState", (event, state) => {
-      const coords = appState.get("coords");
-      this.map.panTo(new L.LatLng(coords[0], coords[1]));
-    });
-  }
-
-  setCoords = () => {};
+  componentDidUpdate = () => {
+    const coords = appState.get("coords");
+    this.map.panTo(new L.LatLng(coords[0], coords[1]));
+  };
 
   componentDidMount = () => {
     this.map = L.map("map").setView(appState.get("coords"), 13);

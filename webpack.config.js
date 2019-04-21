@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
   devtool: "cheap-eval-source-map",
-  // watch: true,
+  watch: true,
   entry: {
     app: ["babel-polyfill", "./public/index.js"]
   },

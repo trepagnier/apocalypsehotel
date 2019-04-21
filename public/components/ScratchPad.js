@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import getData from "app/functions/getData";
 import api from "app/api/api";
 
+/*
+  Generic async module for testing code
+*/
+
 const doWork = () =>
   new Promise(res => {
     api.getCityMetaData("new orleans").then(data => {

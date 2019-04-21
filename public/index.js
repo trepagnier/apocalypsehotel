@@ -1,5 +1,5 @@
-import render from "app/render";
-import state from "app/state";
-import getData from "app/functions/getData";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "app/components/App";
 
-render();
+ReactDOM.render(<App />, document.getElementById(`app`));

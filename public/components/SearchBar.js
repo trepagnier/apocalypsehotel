@@ -1,29 +1,17 @@
 import React from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
-import "react-bootstrap-typeahead/css/Typeahead.css";
-import api from "app/api/api";
 import PubSub from "pubsub-js";
+import api from "app/api/api";
 import getLocationSummary from "app/functions/getLocationSummary";
 import $ from "jquery";
 import appState from "app/state";
 import capitalize from "app/functions/capitalize";
+import getTargetLocationData from "app/functions/getTargetLocationData";
+import resolveSearchString from "app/functions/resolveSearchString";
+import "react-bootstrap-typeahead/css/Typeahead.css";
 
 const style = {
   paddingBottom: 0
-};
-
-const resolveSearchString = input => {
-  if (!input || (input.target && !input.target.value)) return false;
-
-  let searchString =
-    input.target && input.target.value ? input.target.value : input;
-
-  // @TODO: fix this messy hack. If you pass the full location name rather than
-  // a partial location name, it only returns partial results.
-  if (searchString.length >= 3) {
-    return searchString.substring(0, searchString.length - 2);
-  }
-  return searchString;
 };
 
 export default class SearchBar extends React.Component {
@@ -34,7 +22,7 @@ export default class SearchBar extends React.Component {
     };
   }
   updateSearch = e => {
-    // @TODO: `e` can either be a string or an object. Bad!! Create a click
+    // @TODO: `e` can either be a string or an object. Bad! Create a click
     // handler for both types and pass the resolved string to this function
     const searchString = resolveSearchString(e);
     if (!searchString) return;
@@ -51,16 +39,8 @@ export default class SearchBar extends React.Component {
 
       // If there's only one result, assume it's the search target and proceed
       if (locations[0].id) {
-        api.getCityMetaDataById(locations[0].id).then(metadata => {
-          getLocationSummary(
-            `${metadata.name}%2C_${capitalize(metadata.region_name)}`,
-            metadata.hotel_count
-          ).then(summary => {
-            appState.set("locationSummary", summary);
-            console.log(summary);
-          });
-
-          appState.set("coords", [metadata.lat, metadata.lng]);
+        getTargetLocationData(locations[0].id).then(data => {
+          appState.extend(data);
         });
         return;
       }
