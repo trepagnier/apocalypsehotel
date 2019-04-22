@@ -25,12 +25,24 @@
     "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "babel": "^6.23.0",
     "babel-jest": "^24.7.1",
     "bootstrap": "^4.1.3",
     "cors": "^2.8.5",
     "css-loader": "^2.1.1",
     "image-webpack-loader": "^4.6.0",
     "jquery": "^3.3.1",
+    "karma": "^4.1.0",
+    "karma-babel-preprocessor": "^8.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-webpack": "^3.0.5",
     "leaflet": "^1.4.0",
     "node-watch": "^0.6.0",
     "phaser": "^3.3.0",
@@ -41,6 +53,7 @@
     "style-loader": "^0.23.1"
   },
   "scripts": {
+    "test": "karma start karma.conf.js",
     "start-app": "node_modules/.bin/webpack-dev-server --config webpack.config.js",
     "start-server": "node server/index.js",
     "build": "webpack --config webpack.config.js"

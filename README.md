@@ -8,6 +8,10 @@ _"Fun fact: You can make any Wikipedia article dystopian by changing it to the p
 - `yarn start-app`
 - [http://localhost:8020/](http://localhost:8020/)
 
+#### Test
+
+`yarn test`
+
 #### About
 
 The app leverages the Roomkey API for locational search results by proxying the requests through [cors-anywhere](https://cors-anywhere.herokuapp.com/). The content is pulled from Wikipedia using their WikiMedia API and then past-tensified using [this library](https://github.com/migregorio/Tensify/blob/master/tensify.js). The "encampments" listed for each location correspond to the number of hotels there, as told by Roomkey's API.

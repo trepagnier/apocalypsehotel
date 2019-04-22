@@ -3,14 +3,13 @@ const path = require("path");
 
 module.exports = {
   devtool: "cheap-eval-source-map",
-  watch: true,
   entry: {
     app: ["babel-polyfill", "./public/index.js"]
   },
   output: {
     path: path.resolve(__dirname, "public/build"),
     publicPath: "/build/",
-    filename: "project.bundle.js"
+    filename: "[name].bundle.js"
   },
   devServer: {
     compress: true,
