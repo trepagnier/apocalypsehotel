@@ -1,3 +1,5 @@
+process.env.CHROME_BIN = require("puppeteer").executablePath();
+
 const webpackConfig = require("./webpack.config.js");
 
 const browserMode = false;
@@ -8,7 +10,7 @@ module.exports = config => {
     client: {
       captureConsole: !browserMode
     },
-    frameworks: ["jasmine"],
+    frameworks: ["mocha", "chai"],
     reporters: ["mocha"],
     port: 9876,
     colors: true,
@@ -19,20 +21,21 @@ module.exports = config => {
       "karma-chrome-launcher",
       "karma-phantomjs-launcher",
       "karma-webpack",
-      "karma-jasmine"
+      "karma-mocha",
+      "karma-chai"
     ],
     logLevel: browserMode ? config.LOG_DEBUG : config.LOG_DISABLE,
     autoWatch: false,
-    browsers: browserMode ? ["Chrome"] : ["PhantomJS"],
+    browsers: browserMode ? ["Chrome"] : ["ChromeHeadless"],
     singleRun: !browserMode,
     autoWatchBatchDelay: 300,
     webpack: webpackConfig,
     files: [
       "./node_modules/jquery/dist/jquery.min.js",
-      "./public/**/*.spec.js"
+      "./public/**/*.test.js"
     ],
     preprocessors: {
-      "./public/**/*.spec.js": ["webpack"]
+      "./public/**/*.test.js": ["webpack"]
     },
     babelPreprocessor: {
       options: {
