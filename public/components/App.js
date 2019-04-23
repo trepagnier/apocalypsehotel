@@ -7,9 +7,6 @@ export default class App extends React.Component {
   constructor() {
     super();
 
-    // Wake up proxy server
-    api.search("new orleans");
-
     /*
       The `state` module is the single source of truth for all stateful data.
       When it gets updated, an event is published that is received here in

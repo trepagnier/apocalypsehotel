@@ -17,7 +17,8 @@ export default class SearchBar extends React.Component {
   constructor() {
     super();
     this.state = {
-      options: []
+      options: [],
+      awake: false
     };
   }
   updateSearch = e => {
@@ -52,19 +53,35 @@ export default class SearchBar extends React.Component {
       this.updateSearch(target.value);
     }, 20);
   };
-  render() {
-    return (
-      <div onClick={this.onWrapperClick}>
-        <Typeahead
-          id="typeahead"
-          options={this.state.options}
-          labelKey="name"
-          onInputChange={this.updateSearch}
-          onKeyDown={this.updateSearch}
-          onBlur={this.updateSearch}
-          placeholder="Search by city..."
-        />
-      </div>
-    );
-  }
+  wakeUpProxyServer = () => {
+    api.search("new orleans").then(data => {
+      this.setState({
+        awake: true
+      });
+    });
+  };
+  componentDidMount = () => {
+    this.wakeUpProxyServer();
+  };
+  conditionallyRender = () => {
+    if (this.state.awake) {
+      return (
+        <div onClick={this.onWrapperClick}>
+          <Typeahead
+            id="typeahead"
+            options={this.state.options}
+            labelKey="name"
+            onInputChange={this.updateSearch}
+            onKeyDown={this.updateSearch}
+            onBlur={this.updateSearch}
+            placeholder="Search by city..."
+          />
+        </div>
+      );
+    }
+    return <div style={{ paddingLeft: 20 }}>Waking up. Just a moment...</div>;
+  };
+  render = () => {
+    return <div>{this.conditionallyRender()}</div>;
+  };
 }
