@@ -6,7 +6,6 @@ import isUSState from "app/functions/isUSState";
 // @TODO: Find a better solution. Include regions for US but not international
 // cities.
 function getLocationString(name, region) {
-  console.log(region);
   if (!isUSState(region)) return name;
   return `${name}%2C_${capitalize(region)}`;
 }

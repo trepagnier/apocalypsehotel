@@ -1,4 +1,5 @@
 import getWikiSummary from "app/functions/getWikiSummary";
+import toPastTense from "app/lib/tensify";
 
 const hotelDescriptor = "encampment";
 const getHotelDescriptor = nounType =>
@@ -19,7 +20,7 @@ export default (wikiSearch, hotelCount) =>
           "p"
         )} located in the locality once called "${wikiSearch.split("%")[0]}".`;
       } else {
-        description = `${summary.extract.toPastTense()}<br><br>
+        description = `${toPastTense(summary.extract)}<br><br>
         There are ${hotelCount} ${getHotelDescriptor("p")} located here.`;
       }
 

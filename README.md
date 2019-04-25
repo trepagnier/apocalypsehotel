@@ -10,6 +10,7 @@ _"Fun fact: You can make any Wikipedia article dystopian by changing it to the p
 
 #### Test
 
+This repo provides unit tests for critical application logic. Integration tests are still a big todo.
 `yarn test`
 
 #### About
@@ -20,7 +21,7 @@ I wrote a generic Node Express server that didn't end up getting used. I had a n
 
 #### TODO
 
-- Write tests.
+- Write integration tests.
 - Add error handling for remote requests.
 - Make it a game 🕹️.
 - Add dystopic pixel art of dessicated Marriots and Best Westerns strewn across a sorrowful landscape. 😃

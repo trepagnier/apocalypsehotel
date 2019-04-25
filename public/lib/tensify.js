@@ -873,8 +873,7 @@ var regularVerbs = [
 
 // Converts string to past tense
 // The method should be executed using a string variable - the method does not accept arguments
-String.prototype.toPastTense = function() {
-  var text = this;
+export default function(text) {
   text = text.replace(/ to /g, " to ####");
   text = text.replace(/ (my|your|their|his|her|its|a|the) /g, " $1 ####");
   regularVerbs.forEach(function(element) {
@@ -908,21 +907,4 @@ String.prototype.toPastTense = function() {
     text = text.replace(verbRegex, replacementVerb);
   });
   return text.replace(/####/g, "");
-};
-
-// Converts string to present tense
-// The method should be executed using a string variable - the method does not accept arguments
-String.prototype.toPastParticiple = function() {
-  // Not implemented
-};
-
-// Test
-/*
-window.onload = function() {
-  var testText =
-    "Here is my short story with present, present perfect, and present continuous tense. Would you please check my story and point out my mistakes? Thank you for being helpful to me. It is 9:00 AM in the morning and the first thing I am going to do is to knock on the door of my mother's room. She always sleeps until late. Today, she shouldn't sleep much since a special guest is coming to meet us in the evening and, for that, she must get up. I normally wake up at 7:00 AM and then watch the morning show. After that, I take a shower and eat my breakfast. I don't like eating omelets for breakfast. I prefer taking two slices of bread, one glass of milk, and one tablespoon of peanut butter instead. It keeps me healthy, active, and smart. My sister has been sitting at the table for fifteen minutes and she's waiting for me to make her breakfast, but I can't do it. I am not in the mood to do anything for her. My sister has never prepared breakfast for herself; and I do not like it. She must know her responsibility and stop being dependent on me, because she is growing up now and she needs to learn how to do small things like this.";
-  var tensifiedText = testText.toPastTense();
-  document.getElementById("test-input").value = testText;
-  document.getElementById("test-output").value = tensifiedText;
-};
-*/
+}

@@ -11,6 +11,9 @@ module.exports = {
     publicPath: "/build/",
     filename: "[name].bundle.js"
   },
+  node: {
+    fs: "empty"
+  },
   devServer: {
     compress: true,
     port: 8020,
