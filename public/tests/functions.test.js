@@ -9,8 +9,6 @@ import fetchMock from "fetch-mock";
 import "es6-promise";
 import "isomorphic-fetch";
 
-let request = null;
-
 describe("functions", () => {
   describe("capitalize", () => {
     it("should capitalize the first letter of the provided string", () => {

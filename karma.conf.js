@@ -2,7 +2,7 @@ process.env.CHROME_BIN = require("puppeteer").executablePath();
 
 const webpackConfig = require("./webpack.config.js");
 
-const browserMode = true;
+const browserMode = false;
 
 module.exports = config => {
   config.set({
